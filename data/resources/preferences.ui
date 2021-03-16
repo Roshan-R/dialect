@@ -1,29 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.38.2 -->
 <interface>
-  <requires lib="gtk+" version="3.0"/>
+  <requires lib="gtk+" version="3.24"/>
   <requires lib="libhandy" version="1.0"/>
   <template class="DialectPreferencesWindow" parent="HdyPreferencesWindow">
-    <property name="default_height">420</property>
-    <property name="default_width">600</property>
+    <property name="can-focus">False</property>
     <property name="modal">True</property>
-    <property name="window_position">center-on-parent</property>
+    <property name="window-position">center-on-parent</property>
+    <property name="default-width">600</property>
+    <property name="default-height">420</property>
     <child>
       <object class="HdyPreferencesPage">
         <property name="visible">True</property>
+        <property name="can-focus">False</property>
         <child>
           <object class="HdyPreferencesGroup">
-            <property name="title" translatable="yes">Appearance</property>
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="title" translatable="yes">Appearance</property>
             <child>
               <object class="HdyActionRow">
-                <property name="title" translatable="yes">Dark Mode</property>
                 <property name="visible">True</property>
-                <property name="activatable_widget">dark_mode</property>
+                <property name="can-focus">False</property>
+                <property name="title" translatable="yes">Dark Mode</property>
+                <property name="activatable-widget">dark_mode</property>
                 <child>
                   <object class="GtkSwitch" id="dark_mode">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="valign">center</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+            <child>
+              <object class="HdyActionRow">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="title" translatable="yes">Font Size</property>
+                <child>
+                  <object class="GtkFontButton" id="font_size">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="font">Sans 12</property>
+                    <property name="language">en-us</property>
+                    <property name="preview-text"/>
                   </object>
                 </child>
               </object>
@@ -32,18 +56,20 @@
         </child>
         <child>
           <object class="HdyPreferencesGroup">
-            <property name="title" translatable="yes">Behavior</property>
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="title" translatable="yes">Behavior</property>
             <child>
               <object class="HdyActionRow">
-                <property name="title" translatable="yes">Live Translation</property>
-                <property name="subtitle" translatable="yes">Warning: Your IP address may get banned for API abuse.</property>
                 <property name="visible">True</property>
-                <property name="activatable_widget">live_translation</property>
+                <property name="can-focus">False</property>
+                <property name="title" translatable="yes">Live Translation</property>
+                <property name="activatable-widget">live_translation</property>
+                <property name="subtitle" translatable="yes">Warning: Your IP address may get banned for API abuse.</property>
                 <child>
                   <object class="GtkSwitch" id="live_translation">
                     <property name="visible">True</property>
-                    <property name="can_focus">True</property>
+                    <property name="can-focus">True</property>
                     <property name="valign">center</property>
                   </object>
                 </child>
@@ -51,23 +77,26 @@
             </child>
             <child>
               <object class="HdyComboRow" id="translate_accel">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Translation Shortcut</property>
                 <property name="subtitle" translatable="yes">Unselected choice will be used for line break.</property>
-                <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="HdyComboRow" id="backend">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Translator</property>
                 <property name="subtitle" translatable="yes">Choose from the available translation services.</property>
-                <property name="visible">True</property>
               </object>
             </child>
             <child>
               <object class="HdyActionRow" id="backend_instance_row">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
                 <property name="title" translatable="yes">Translator Instance</property>
                 <property name="subtitle" translatable="yes">Specify URL of translation service.</property>
-                <property name="visible">True</property>
                 <child>
                   <object class="GtkStack" id="backend_instance_stack">
                     <property name="visible">True</property>
@@ -77,14 +106,19 @@
                       <object class="GtkBox">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="spacing">6</property>
-                        <property name="valign">center</property>
                         <property name="halign">end</property>
+                        <property name="valign">center</property>
+                        <property name="spacing">6</property>
                         <child>
                           <object class="GtkLabel" id="backend_instance_label">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can-focus">True</property>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <object class="GtkButton" id="backend_instance_edit">
@@ -100,6 +134,11 @@
                               </object>
                             </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                       </object>
                       <packing>
@@ -111,14 +150,16 @@
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">center</property>
-                        <style>
-                          <class name="linked"/>
-                        </style>
                         <child>
                           <object class="GtkEntry" id="backend_instance">
                             <property name="visible">True</property>
-                            <property name="can_focus">True</property>
+                            <property name="can-focus">True</property>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
                         </child>
                         <child>
                           <object class="GtkButton" id="backend_instance_reset">
@@ -134,6 +175,11 @@
                               </object>
                             </child>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                         <child>
                           <object class="GtkButton" id="backend_instance_save">
@@ -145,10 +191,19 @@
                               <class name="suggested-action"/>
                             </style>
                           </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">2</property>
+                          </packing>
                         </child>
+                        <style>
+                          <class name="linked"/>
+                        </style>
                       </object>
                       <packing>
                         <property name="name">edit</property>
+                        <property name="position">1</property>
                       </packing>
                     </child>
                   </object>
@@ -159,9 +214,10 @@
         </child>
         <child>
           <object class="HdyPreferencesGroup" id="search_provider">
-            <property name="title" translatable="yes">Search Provider</property>
-            <property name="description" translatable="yes">Dialect has a GNOME Search Provider. Enabling or disabling Live Translation here will also enable or disable the GNOME Search Provider. This is to reduce the possibility of API abuse. Also make sure that the feature is enabled in GNOME Settings.</property>
             <property name="visible">True</property>
+            <property name="can-focus">False</property>
+            <property name="description" translatable="yes">Dialect has a GNOME Search Provider. Enabling or disabling Live Translation here will also enable or disable the GNOME Search Provider. This is to reduce the possibility of API abuse. Also make sure that the feature is enabled in GNOME Settings.</property>
+            <property name="title" translatable="yes">Search Provider</property>
           </object>
         </child>
       </object>

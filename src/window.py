@@ -7,7 +7,7 @@ import threading
 from gettext import gettext as _
 from tempfile import NamedTemporaryFile
 
-from gi.repository import Gdk, GLib, GObject, Gtk, Gst, Handy
+from gi.repository import Gdk, GLib, GObject, Gtk, Gst, Handy, Pango
 
 from gtts import gTTS, lang
 
@@ -125,9 +125,18 @@ class DialectWindow(Handy.ApplicationWindow):
         gtk_settings.set_property('gtk-application-prefer-dark-theme',
                                   dark_mode)
 
+        # Load Font
+        self.src_text.override_font(Pango.FontDescription(
+                                    self.settings.get_string('font-name')))
+
+        self.dest_text.override_font(Pango.FontDescription(
+                                    self.settings.get_string('font-name')))
+
         # Connect responsive design function
         self.connect('check-resize', self.responsive_listener)
         self.connect('destroy', self.save_translator_settings)
+        self.connect('destroy', self.save_font_settings)
+
 
         self.setup_headerbar()
         self.setup_actionbar()
@@ -677,6 +686,19 @@ class DialectWindow(Handy.ApplicationWindow):
             )
         elif not self.voice_loading and not self.lang_speech:
             self.voice_btn.set_sensitive(sensitive)
+
+    def change_font(self, font_name):
+        self.font_name = font_name
+        self.src_text.override_font(Pango.FontDescription(font_name))
+        self.dest_text.override_font(Pango.FontDescription(font_name))
+
+
+    def save_font_settings(self, *args, **kwargs):
+        if hasattr(self, 'font_name'):
+            self.settings.set_value('font-name',
+                                    GLib.Variant('s', self.font_name))
+
+
 
     def user_action_ended(self, buffer):
         # If the text is over the highest number of characters allowed, it is truncated.
