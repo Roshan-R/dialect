@@ -28,6 +28,26 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="HdyActionRow">
+                <property name="visible">True</property>
+                <property name="can-focus">True</property>
+                <property name="title" translatable="yes">Font</property>
+                <child>
+                  <object class="GtkFontButton" id="font_name">
+                    <property name="visible">True</property>
+                    <property name="can-focus">True</property>
+                    <property name="receives-default">True</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="valign">center</property>
+                    <property name="font">Sans 12</property>
+                    <property name="language">en-us</property>
+                    <property name="preview-text"/>
+                  </object>
+                </child>
+              </object>
+            </child>
           </object>
         </child>
         <child>
@@ -168,3 +188,4 @@
     </child>
   </template>
 </interface>
+

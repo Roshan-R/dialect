@@ -7,7 +7,7 @@ import re
 import threading
 from gettext import gettext as _
 
-from gi.repository import Gio, GLib, Gtk, Handy
+from gi.repository import Gio, GLib, Gtk, Handy, Pango
 
 from dialect.define import RES_PATH
 from dialect.translators import TRANSLATORS
@@ -22,6 +22,7 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
 
     # Get preferences widgets
     dark_mode = Gtk.Template.Child()
+    font_name = Gtk.Template.Child()
     live_translation = Gtk.Template.Child()
     translate_accel = Gtk.Template.Child()
     backend = Gtk.Template.Child()
@@ -77,6 +78,10 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
         # Toggle dark mode
         self.dark_mode.connect('notify::active', self._toggle_dark_mode)
 
+        # Change font size
+        self.font_name.connect('font-set', self._change_font)
+        self.font_name.set_font_name(self.settings.get_string('font-name'))
+
         # Set translate accel sensitivity by live translation state
         self.translate_accel.set_sensitive(not self.live_translation.get_active())
         self.live_translation.connect('notify::active', self._toggle_accel_pref)
@@ -129,6 +134,9 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
         gtk_settings = Gtk.Settings.get_default()
         active = switch.get_active()
         gtk_settings.set_property('gtk-application-prefer-dark-theme', active)
+
+    def _change_font(self, switch):
+        self.parent.change_font(self.font_name.get_font_name())
 
     def _toggle_accel_pref(self, switch, _active):
         self.translate_accel.set_sensitive(not switch.get_active())
