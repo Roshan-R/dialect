@@ -37,9 +37,9 @@
               <object class="HdyActionRow">
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
-                <property name="title" translatable="yes">Font Size</property>
+                <property name="title" translatable="yes">Font</property>
                 <child>
-                  <object class="GtkFontButton" id="font_size">
+                  <object class="GtkFontButton" id="font_name">
                     <property name="visible">True</property>
                     <property name="can-focus">True</property>
                     <property name="receives-default">True</property>

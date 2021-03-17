@@ -22,7 +22,7 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
 
     # Get preferences widgets
     dark_mode = Gtk.Template.Child()
-    font_size = Gtk.Template.Child()
+    font_name = Gtk.Template.Child()
     live_translation = Gtk.Template.Child()
     translate_accel = Gtk.Template.Child()
     backend = Gtk.Template.Child()
@@ -79,8 +79,8 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
         self.dark_mode.connect('notify::active', self._toggle_dark_mode)
 
         # Change font size
-        self.font_size.connect('font-set', self._change_font)
-        self.font_size.set_font_name(self.settings.get_string('font-name'))
+        self.font_name.connect('font-set', self._change_font)
+        self.font_name.set_font_name(self.settings.get_string('font-name'))
 
         # Set translate accel sensitivity by live translation state
         self.translate_accel.set_sensitive(not self.live_translation.get_active())
@@ -138,7 +138,7 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
         gtk_settings.set_property('gtk-application-prefer-dark-theme', active)
 
     def _change_font(self, switch):
-        self.parent.change_font(self.font_size.get_font_name())
+        self.parent.change_font(self.font_name.get_font_name())
 
 
 
