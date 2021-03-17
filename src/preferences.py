@@ -7,7 +7,7 @@ import re
 import threading
 from gettext import gettext as _
 
-from gi.repository import Gio, GLib, Gtk, Handy, Pango
+from gi.repository import Gio, GLib, Gtk, Handy
 
 from dialect.define import RES_PATH
 from dialect.translators import TRANSLATORS
@@ -131,8 +131,10 @@ class DialectPreferencesWindow(Handy.PreferencesWindow):
                 self.parent.change_backends(backend)
 
     def _toggle_dark_mode(self, switch, _active):
+        print("toggling dark mode")
         gtk_settings = Gtk.Settings.get_default()
         active = switch.get_active()
+        print(gtk_settings)
         gtk_settings.set_property('gtk-application-prefer-dark-theme', active)
 
     def _change_font(self, switch):
